@@ -18,12 +18,21 @@ void main()
 
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
+	bool line = false;
+	bool column = false;
 	// you can loop k higher to see more color choices
-	for (k = 1; k < 255; k++)
-	{
-		// pick the colorattribute k you want
-		SetConsoleTextAttribute(hConsole, k);
-		cout << k << " I want to be nice today!" << endl;
+	for (int i = 0; i < 8; i++) {
+		column ? line = true: line = false;
+		
+		for (int k = 0; k < 8; k++)
+		{
+			// pick the colorattribute k you want
+			SetConsoleTextAttribute(hConsole, line * (16*4));
+			cout << " ";
+			line = !line;
+		}
+		column = !column;
+		cout << endl;
 	}
 	system("pause");	
 }
